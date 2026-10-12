@@ -9,6 +9,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 const BASE = process.env.BASE_URL || "http://localhost:3100";
+const RPC_URL = process.env.SOLANA_RPC_URL || "https://api.devnet.solana.com";
 const OUT = process.env.OUT_DIR || path.resolve(import.meta.dirname, "../../shots");
 const RECORD = process.env.RECORD === "1";
 fs.mkdirSync(OUT, { recursive: true });
@@ -19,16 +20,37 @@ const check = (name, ok, detail = "") => {
   console.log(`${ok ? "PASS" : "FAIL"}  ${name}${detail ? " — " + detail : ""}`);
 };
 
-const rpc = async (method, params) => {
-  const r = await fetch(process.env.SOLANA_RPC_URL || "https://api.devnet.solana.com", {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify({ jsonrpc: "2.0", id: 1, method, params }),
-  });
-  return (await r.json()).result;
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+// Devnet's public RPC rate-limits hard, so every call backs off and retries.
+const rpc = async (method, params, tries = 6) => {
+  let last;
+  for (let i = 0; i < tries; i++) {
+    try {
+      const r = await fetch(RPC_URL, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ jsonrpc: "2.0", id: 1, method, params }),
+      });
+      const j = await r.json();
+      if (j.error) {
+        last = new Error(j.error.message);
+        if (j.error.code === 429 || /rate|too many/i.test(j.error.message || "")) {
+          await sleep(1200 * (i + 1));
+          continue;
+        }
+        throw last;
+      }
+      return j.result;
+    } catch (e) {
+      last = e;
+      await sleep(1200 * (i + 1));
+    }
+  }
+  throw last;
 };
 
-const browser = await chromium.launch({ executablePath: "/usr/bin/chromium", args: ["--no-sandbox", "--disable-dev-shm-usage"] });
+const browser = await chromium.launch({ executablePath: "/usr/bin/chromium", args: ["--no-sandbox", "--disable-dev-shm-usage", "--ignore-certificate-errors"] });
 const context = await browser.newContext({
   viewport: { width: 1920, height: 1080 },
   deviceScaleFactor: 1,

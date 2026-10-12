@@ -31,9 +31,9 @@
 
 The demo's mint, treasury, merchant accounts and agent cards do not exist yet because **no devnet SOL can be obtained from an automated faucet today**. Everything waits on ~0.05 SOL on the business key.
 
-Tried and failed (details in `faucet-status.md`): public RPC `requestAirdrop` → 429 (daily limit / faucet dry, retried continuously by `scripts/faucet-loop.sh`); faucet.solana.com → explicitly asks AI agents not to use it; solfaucet.com → same RPC, same 429; triangleplatform → suspended; QuickNode/Chainstack → need mainnet funds; devnetfaucet.org + Pinestake → need a GitHub login (not permitted to sign in); zan.top → account; Ankr/dRPC/OnFinality/Helius/PublicNode → API key or paid; proof-of-work faucet (`devnet-pow`) → all 23 on-chain pools empty.
+Tried and failed (details in `faucet-status.md`): public RPC `requestAirdrop` → 429 (daily limit / faucet dry, retried continuously by `scripts/faucet-loop.sh`); faucet.solana.com → explicitly asks AI agents not to use it; solfaucet.com → **same RPC under the hood** (`api.devnet.solana.com`), so the same 429; triangleplatform → suspended; QuickNode/Chainstack → need mainnet funds; devnetfaucet.org + Pinestake → need a GitHub login (not permitted to sign in); zan.top → account; Ankr/dRPC/OnFinality/Helius/PublicNode → API key or paid; proof-of-work faucet (`devnet-pow`) → all 23 on-chain pools empty, **and** its `airdrop` instruction needs the fee payer to already hold ~5,000 lamports, so it cannot bootstrap an empty wallet. A local validator is impossible on this host: every agave/solana release ships `x86_64-unknown-linux-gnu` only — no aarch64 Linux build (checked v1.18.26, v2.1.0, v2.3.0, v3.0.0).
 
-**Asked Anthony (Discord, 14:41 + 14:51 UTC)** to spend 30 seconds pasting the business address into faucet.solana.com (Devnet, 5 SOL). That is the unblock.
+**Asked Anthony (Discord, 14:41, 14:51 and 14:58 UTC)** to spend 30 seconds pasting the business address into faucet.solana.com (Devnet, 5 SOL). That is the unblock. `scripts/on-funded.sh` is running: it watches the balance and runs the devnet setup the moment funding lands.
 
 ---
 
@@ -49,6 +49,9 @@ Tried and failed (details in `faucet-status.md`): public RPC `requestAirdrop` �
 - [x] Pitch pack: market research, script, 10 slides + PDF, submission drafts (`pitch/`)
 - [x] Demo video script (`submission/DEMO-VIDEO-SCRIPT.md`)
 - [x] E2E harness (`app/scripts/e2e.mjs`): real browser, desktop + mobile, checks every explorer link against devnet RPC
+- [x] Demo-video pipeline rehearsed end to end in the browser: 8 clips record cleanly (`shots/beats/`), and all 8 narration tracks are already generated (`shots/video-work/*.mp3`, 133.8s total ≈ 2:14)
+- [x] `submission/SUBMISSION.md` — ready-to-paste Colosseum answers plus a judges' verification checklist
+- [x] `scripts/on-funded.sh` — watches for devnet SOL and runs the setup automatically
 
 ## Next (in order, once funded)
 

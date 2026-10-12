@@ -14,3 +14,11 @@ out/
 *.tsbuildinfo
 .vercel/
 .DS_Store
+# generated during the demo run
+faucet-loop.log
+faucet-setup.log
+FUNDED
+shots/beats/
+shots/video-work/
+shots/video-raw/
+public/allowance/

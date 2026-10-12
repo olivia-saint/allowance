@@ -155,7 +155,7 @@ const beats = [
   },
 ];
 
-const browser = await chromium.launch({ executablePath: "/usr/bin/chromium", args: ["--no-sandbox", "--disable-dev-shm-usage"] });
+const browser = await chromium.launch({ executablePath: "/usr/bin/chromium", args: ["--no-sandbox", "--disable-dev-shm-usage", "--ignore-certificate-errors"] });
 const manifest = [];
 
 for (const beat of beats) {
