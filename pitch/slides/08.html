@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>Allowance — slide 8</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#0B1020}
+body{font-family:Inter,"SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;color:#fff;-webkit-font-smoothing:antialiased}
+.slide{position:relative;width:1920px;height:1080px;padding:84px 128px 72px;display:flex;flex-direction:column;
+  background:radial-gradient(1000px 700px at 92% 0%,rgba(153,69,255,.22),transparent 70%),
+             radial-gradient(1000px 700px at 0% 100%,rgba(20,241,149,.11),transparent 70%),#0B1020}
+.top{display:flex;justify-content:space-between;align-items:center;font-size:22px;color:rgba(255,255,255,.5);letter-spacing:.02em}
+.brand{display:flex;align-items:center;gap:14px;font-weight:700;color:#fff;font-size:26px;letter-spacing:-.01em}
+.dot{width:20px;height:20px;border-radius:6px;background:linear-gradient(135deg,#9945FF,#14F195)}
+main{flex:1;display:flex;flex-direction:column;justify-content:center;min-height:0;padding:32px 0 20px}
+.bot{display:flex;justify-content:space-between;font-size:20px;color:rgba(255,255,255,.38)}
+.kicker{font-size:26px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin-bottom:26px}
+.grad,.kicker{background:linear-gradient(90deg,#9945FF,#14F195);-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.08em}
+h1{font-size:120px;line-height:1.02;font-weight:800;letter-spacing:-.035em}
+h2{font-size:84px;line-height:1.06;font-weight:800;letter-spacing:-.03em}
+h3{font-size:40px;line-height:1.15;font-weight:700;letter-spacing:-.015em}
+.lead{font-size:40px;line-height:1.4;color:rgba(255,255,255,.75)}
+.card{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.11);border-radius:28px;padding:44px}
+.card p{font-size:30px;line-height:1.42;color:rgba(255,255,255,.72);margin-top:16px}
+.muted{color:rgba(255,255,255,.6)}
+.foot{font-size:17px;color:rgba(255,255,255,.45);line-height:1.55}
+.row{display:flex;gap:36px}
+.row>*{flex:1}
+.num{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:16px;
+  background:linear-gradient(135deg,#9945FF,#14F195);color:#0B1020;font-weight:800;font-size:28px;flex:none}
+.chip{display:inline-flex;align-items:center;gap:12px;padding:16px 28px;border-radius:999px;font-size:26px;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.85)}
+.chip::before{content:"";width:12px;height:12px;border-radius:50%;background:#14F195}
+.gborder{border:2px solid transparent;background:linear-gradient(#141A33,#141A33) padding-box,linear-gradient(135deg,#9945FF,#14F195) border-box}
+
+
+.cols{display:grid;grid-template-columns:1fr 1.15fr;gap:40px;margin-top:44px}
+.cols .card{padding:36px 44px}
+h2{font-size:76px}
+.cols h3{font-size:34px;color:rgba(255,255,255,.6);font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:24px}
+.plan{margin-top:20px;padding:20px 0 4px;border-top:1px solid rgba(255,255,255,.1)}
+.plan .name{font-size:40px;font-weight:800}
+.plan .price{font-size:30px;color:rgba(255,255,255,.8);margin-top:6px}
+.why{font-size:22px;line-height:1.45;color:rgba(255,255,255,.55);margin-top:10px}
+.steps{list-style:none;margin-top:22px;display:flex;flex-direction:column;gap:24px}
+.steps li{display:flex;gap:24px;align-items:flex-start;font-size:29px;line-height:1.35;color:rgba(255,255,255,.85)}
+.steps li small{display:block;font-size:22px;color:rgba(255,255,255,.5);margin-top:4px}
+.steps .num{width:50px;height:50px;font-size:24px;border-radius:14px}
+</style>
+</head>
+<body>
+<div class="slide">
+<header class="top"><div class="brand"><span class="dot"></span>Allowance</div><div>Business model & go-to-market</div></header>
+<main>
+<div class="kicker">Business model &amp; go-to-market</div>
+<h2>Priced like a seat. <span class="grad">Grows with spend.</span></h2>
+<div class="cols">
+  <div class="card">
+    <h3>Pricing (planned)</h3>
+    <div class="plan"><div class="name">Free</div><div class="price">1 agent, up to $250 a month of agent spend</div><div class="why">For builders and hackathon teams.</div></div>
+    <div class="plan"><div class="name grad">Business</div><div class="price">$10 per agent / month + 0.5% of agent spend</div><div class="why">Per-seat matches how small businesses buy AI employees; the spend share grows with value. To be tested with design partners.</div></div>
+  </div>
+  <div class="card">
+    <h3>Go-to-market</h3>
+    <ul class="steps">
+      <li><span class="num">1</span><div>Saint's own AI employees<small>First user: internal, not external traction</small></div></li>
+      <li><span class="num">2</span><div>Encode Club developers &amp; hackathons<small>Reach the people building agents</small></div></li>
+      <li><span class="num">3</span><div>SDK + MCP server for agent frameworks<small>A budget any agent can plug into</small></div></li>
+      <li><span class="num">4</span><div>x402 merchants &amp; APIs<small>Where agents already pay in USDC</small></div></li>
+    </ul>
+  </div>
+</div>
+</main>
+<footer class="bot"><span>Allowance · A company card for AI employees</span><span>8 / 10</span></footer>
+</div>
+</body>
+</html>

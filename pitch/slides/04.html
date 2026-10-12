@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>Allowance — slide 4</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#0B1020}
+body{font-family:Inter,"SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;color:#fff;-webkit-font-smoothing:antialiased}
+.slide{position:relative;width:1920px;height:1080px;padding:84px 128px 72px;display:flex;flex-direction:column;
+  background:radial-gradient(1000px 700px at 92% 0%,rgba(153,69,255,.22),transparent 70%),
+             radial-gradient(1000px 700px at 0% 100%,rgba(20,241,149,.11),transparent 70%),#0B1020}
+.top{display:flex;justify-content:space-between;align-items:center;font-size:22px;color:rgba(255,255,255,.5);letter-spacing:.02em}
+.brand{display:flex;align-items:center;gap:14px;font-weight:700;color:#fff;font-size:26px;letter-spacing:-.01em}
+.dot{width:20px;height:20px;border-radius:6px;background:linear-gradient(135deg,#9945FF,#14F195)}
+main{flex:1;display:flex;flex-direction:column;justify-content:center;min-height:0;padding:32px 0 20px}
+.bot{display:flex;justify-content:space-between;font-size:20px;color:rgba(255,255,255,.38)}
+.kicker{font-size:26px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin-bottom:26px}
+.grad,.kicker{background:linear-gradient(90deg,#9945FF,#14F195);-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.08em}
+h1{font-size:120px;line-height:1.02;font-weight:800;letter-spacing:-.035em}
+h2{font-size:84px;line-height:1.06;font-weight:800;letter-spacing:-.03em}
+h3{font-size:40px;line-height:1.15;font-weight:700;letter-spacing:-.015em}
+.lead{font-size:40px;line-height:1.4;color:rgba(255,255,255,.75)}
+.card{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.11);border-radius:28px;padding:44px}
+.card p{font-size:30px;line-height:1.42;color:rgba(255,255,255,.72);margin-top:16px}
+.muted{color:rgba(255,255,255,.6)}
+.foot{font-size:17px;color:rgba(255,255,255,.45);line-height:1.55}
+.row{display:flex;gap:36px}
+.row>*{flex:1}
+.num{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:16px;
+  background:linear-gradient(135deg,#9945FF,#14F195);color:#0B1020;font-weight:800;font-size:28px;flex:none}
+.chip{display:inline-flex;align-items:center;gap:12px;padding:16px 28px;border-radius:999px;font-size:26px;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.85)}
+.chip::before{content:"";width:12px;height:12px;border-radius:50%;background:#14F195}
+.gborder{border:2px solid transparent;background:linear-gradient(#141A33,#141A33) padding-box,linear-gradient(135deg,#9945FF,#14F195) border-box}
+
+
+h2.small{font-size:56px}
+.kicker{margin-bottom:18px}
+.diagram{display:grid;grid-template-columns:1fr 230px 1fr 230px 1fr;grid-template-rows:auto 70px auto;align-items:center;margin-top:44px}
+.node{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.13);border-radius:28px;padding:28px 34px;min-height:200px}
+.node h3{font-size:38px}
+.node p{font-size:23px;line-height:1.42;color:rgba(255,255,255,.68);margin-top:12px}
+.node .tag{display:inline-block;margin-top:16px;font-size:22px;font-weight:700;color:#0B1020;background:linear-gradient(90deg,#9945FF,#14F195);padding:6px 16px;border-radius:999px}
+.node.key{background:linear-gradient(#141A33,#141A33) padding-box,linear-gradient(135deg,#9945FF,#14F195) border-box;border:3px solid transparent}
+.arrow{display:flex;flex-direction:column;align-items:center;gap:8px;font-size:20px;color:rgba(255,255,255,.55);font-family:"Liberation Mono",Menlo,monospace}
+.down{grid-column:3;grid-row:2;display:flex;align-items:center;justify-content:center;gap:18px;height:100%;font-size:22px;color:rgba(255,255,255,.6)}
+.down .line{width:0;height:100%;border-left:4px dashed rgba(255,255,255,.35)}
+.human{grid-column:3;grid-row:3;min-height:0;border-style:dashed}
+.chips{display:flex;gap:18px;flex-wrap:wrap;margin-top:36px}
+.chips .chip{font-size:23px;padding:13px 22px}
+</style>
+</head>
+<body>
+<div class="slide">
+<header class="top"><div class="brand"><span class="dot"></span>Allowance</div><div>How it works</div></header>
+<main>
+<div class="kicker">How it works</div>
+<h2 class="small">Each agent gets its own card. <span class="grad">The chain enforces the limit.</span></h2>
+<div class="diagram">
+  <div class="node"><h3>Business treasury</h3><p>USDC on Solana. The business keeps custody.</p></div>
+  <div class="arrow"><span>approve(cap)</span><svg width="170" height="30" viewBox="0 0 170 30"><defs><linearGradient id="g1" gradientUnits="userSpaceOnUse" x1="4" y1="15" x2="150" y2="15"><stop offset="0" stop-color="#9945FF"/><stop offset="1" stop-color="#14F195"/></linearGradient></defs><line x1="4" y1="15" x2="150" y2="15" stroke="url(#g1)" stroke-width="5" stroke-linecap="round"/><path d="M146 4 L166 15 L146 26 Z" fill="#14F195"/></svg></div>
+  <div class="node key"><h3>Agent card</h3><p>Business-owned USDC account. The agent is only an SPL Token delegate.</p><span class="tag">on-chain cap: $50</span></div>
+  <div class="arrow"><span>pay + memo</span><svg width="170" height="30" viewBox="0 0 170 30"><defs><linearGradient id="g2" gradientUnits="userSpaceOnUse" x1="4" y1="15" x2="150" y2="15"><stop offset="0" stop-color="#9945FF"/><stop offset="1" stop-color="#14F195"/></linearGradient></defs><line x1="4" y1="15" x2="150" y2="15" stroke="url(#g2)" stroke-width="5" stroke-linecap="round"/><path d="M146 4 L166 15 L146 26 Z" fill="#14F195"/></svg></div>
+  <div class="node"><h3>Merchant / x402 API</h3><p>HTTP 402 → pay in USDC → retry with proof → resource.</p></div>
+  <div class="down"><div class="line"></div><span>over budget</span></div>
+  <div class="node human"><h3>Human approval</h3><p>One-tap request to the owner.</p></div>
+</div>
+<div class="chips">
+  <span class="chip">Overspend → rejected on-chain</span>
+  <span class="chip">Revoke instantly</span>
+  <span class="chip">Memo receipts + CSV ledger</span>
+  <span class="chip">Fees sponsored: no SOL needed</span>
+</div>
+</main>
+<footer class="bot"><span>Allowance · A company card for AI employees</span><span>4 / 10</span></footer>
+</div>
+</body>
+</html>

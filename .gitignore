@@ -1,0 +1,16 @@
+# secrets — never commit
+.env
+.env.*
+!.env.example
+*.env
+!.env.example
+.devnet-keys.env
+!**/.env.example
+
+# deps / build
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+.vercel/
+.DS_Store

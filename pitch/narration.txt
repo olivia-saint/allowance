@@ -1,0 +1,17 @@
+This month, our AI employees kept failing at the same moment. They'd find the supplier, fill the basket, reach checkout. Then a secure card field, a CVC box, a 3-D Secure pop-up. And they'd stop. A human had to step in. The work was done. Except the payment.
+
+I'm Anthony Beaumont. Businesses are hiring AI agents to do real work, but agents can't safely pay for things. Card checkouts are built to block bots. The workaround, handing an agent a card number or a hot wallet, means unlimited risk.
+
+I see this from both sides. I'm co-founder and CEO of Encode Club, a developer and hackathon community in London, and I'm building Saint, which gives small businesses AI employees for their admin. That's where we kept hitting this wall.
+
+So we built Allowance. A company card for AI employees, on Solana. The business keeps custody. Each agent gets its own card: a USDC account the business owns, where the agent is only a delegate with a capped allowance. That cap isn't enforced by our app. It's enforced by Solana's audited token program. If the agent tries to overspend, the chain rejects it, and the owner can revoke it instantly.
+
+Here's the dashboard. I give an agent fifty dollars. It calls an API that answers "payment required", pays in USDC, retries with proof, and gets the data. Every payment carries an on-chain receipt, exportable for the accountant. Over budget? I get a one-tap approval request instead of a surprise.
+
+Why Solana? Sub-second finality, fractions of a cent per payment, over eleven billion dollars of stablecoins on the network, a ready-made delegate standard, and x402 already live. We sponsor fees, so agents never need SOL.
+
+McKinsey estimates agentic commerce could orchestrate three to five trillion dollars globally by 2030. Every one of those agents needs a budget.
+
+We'll charge per agent per month, plus a small share of agent spend, free for small builders. Our first user is Saint itself. That's internal, not traction, but it's a problem we hit for real. Then Encode's developers, agent-framework integrations, and x402 merchants.
+
+This is a devnet MVP, built in a day. We'd love a Colosseum accelerator place, honest feedback, and design partners. If your business runs AI agents, give them an Allowance.
