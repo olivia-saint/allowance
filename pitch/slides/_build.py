@@ -4,6 +4,7 @@
 Edit the slide bodies below and re-run `python3 _build.py`, then `./render.sh`.
 (Editing the HTML files directly also works, but re-running this overwrites them.)
 """
+import base64
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -146,7 +147,7 @@ h2.small{font-size:56px}
 <div class="diagram">
   <div class="node"><h3>Business treasury</h3><p>USDC on Solana. The business keeps custody.</p></div>
   <div class="arrow"><span>approve(cap)</span>__A1__</div>
-  <div class="node key"><h3>Agent card</h3><p>Business-owned USDC account. The agent is only an SPL Token delegate.</p><span class="tag">on-chain cap: $50</span></div>
+  <div class="node key"><h3>Agent card</h3><p>Business-owned USDC account. The agent is only an SPL Token delegate.</p><span class="tag">on-chain cap: $150</span></div>
   <div class="arrow"><span>pay + memo</span>__A2__</div>
   <div class="node"><h3>Merchant / x402 API</h3><p>HTTP 402 → pay in USDC → retry with proof → resource.</p></div>
   <div class="down"><div class="line"></div><span>over budget</span></div>
@@ -176,8 +177,7 @@ main{justify-content:flex-start;padding-top:36px}
 """, body="""
 <div class="demo-head"><h2>The <span class="grad">dashboard</span></h2><span class="url">allowance.olivia.saint.work · devnet, no real money</span></div>
 <div class="frame">
-  <div class="ph"><span>Dashboard screenshot</span><code>projects/allowance/shots/dashboard.png</code></div>
-  <img src="../../shots/dashboard.png" alt="Allowance dashboard" onerror="this.style.display='none'">
+  <img src="../../shots/02-dashboard.png" alt="The Allowance dashboard, showing two agent cards with live on-chain allowances" onerror="this.style.display='none'">
 </div>
 """))
 
@@ -308,6 +308,17 @@ h1{font-size:104px}
 <div class="stage">Hackathon MVP on Solana devnet · built 12 Oct 2026 · no real money</div>
 """))
 
+def inline(rel: str) -> str | None:
+    """Inlines an asset as a data URI so the slides render from file:// with no server."""
+    p = (HERE / rel).resolve()
+    if not p.exists():
+        return None
+    mime = {".svg": "image/svg+xml", ".png": "image/png", ".jpg": "image/jpeg", ".webp": "image/webp"}.get(p.suffix, "application/octet-stream")
+    return f"data:{mime};base64,{base64.b64encode(p.read_bytes()).decode()}"
+
+
+ASSETS = {rel: inline(rel) for rel in ("../../brand/logo.svg", "../../brand/logo.png", "../../shots/dashboard.png", "../../shots/02-dashboard.png")}
+
 assert len(slides) == TOTAL
 for i, s in enumerate(slides, 1):
     n = f"{i:02d}"
@@ -315,5 +326,11 @@ for i, s in enumerate(slides, 1):
     html = (PAGE.replace("__CSS__", CSS).replace("__EXTRA__", s.get("extra", ""))
                 .replace("__TOP__", top).replace("__BODY__", s["body"].strip())
                 .replace("__TOTAL__", str(TOTAL)).replace("__N__", str(i)))
+    for rel, uri in ASSETS.items():
+        if uri:
+            html = html.replace(f'src="{rel}"', f'src="{uri}"')
+        else:
+            # No asset yet: hide the element rather than show a broken image.
+            html = html.replace(f'<img src="{rel}"', f'<img style="display:none" src="{rel}"')
     (HERE / f"{n}.html").write_text(html)
     print("wrote", f"{n}.html")

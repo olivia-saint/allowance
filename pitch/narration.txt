@@ -6,7 +6,7 @@ I see this from both sides. I'm co-founder and CEO of Encode Club, a developer a
 
 So we built Allowance. A company card for AI employees, on Solana. The business keeps custody. Each agent gets its own card: a USDC account the business owns, where the agent is only a delegate with a capped allowance. That cap isn't enforced by our app. It's enforced by Solana's audited token program. If the agent tries to overspend, the chain rejects it, and the owner can revoke it instantly.
 
-Here's the dashboard. I give an agent fifty dollars. It calls an API that answers "payment required", pays in USDC, retries with proof, and gets the data. Every payment carries an on-chain receipt, exportable for the accountant. Over budget? I get a one-tap approval request instead of a surprise.
+Here's the dashboard. I give an agent a hundred and fifty dollars. It calls an API that answers "payment required", pays in USDC, retries with proof, and gets the data. Every payment carries an on-chain receipt, exportable for the accountant. Over budget? I get a one-tap approval request instead of a surprise.
 
 Why Solana? Sub-second finality, fractions of a cent per payment, over eleven billion dollars of stablecoins on the network, a ready-made delegate standard, and x402 already live. We sponsor fees, so agents never need SOL.
 

@@ -24,7 +24,7 @@ So we built Allowance. A company card for AI employees, on Solana. The business 
 
 **[Slide 5 — Demo screenshot]** *(~20 seconds)*
 
-Here's the dashboard. I give an agent fifty dollars. It calls an API that answers "payment required", pays in USDC, retries with proof, and gets the data. Every payment carries an on-chain receipt, exportable for the accountant. Over budget? I get a one-tap approval request instead of a surprise.
+Here's the dashboard. I give an agent a hundred and fifty dollars. It calls an API that answers "payment required", pays in USDC, retries with proof, and gets the data. Every payment carries an on-chain receipt, exportable for the accountant. Over budget? I get a one-tap approval request instead of a surprise.
 
 **[Slide 6 — Why Solana]**
 
@@ -48,7 +48,7 @@ This is a devnet MVP, built in a day. We'd love a Colosseum accelerator place, h
 
 ## Check before recording
 
-- **"Fifty dollars"** (slide 5): change to whatever allowance the demo actually shows.
+- **"A hundred and fifty dollars"** (slide 5): matches the demo (Ava's allowance is $150, the supplier invoice is $600). If the amount changes, update this line and slide 4 together.
 - **"Built in a day"**: true for the MVP (12 Oct 2026). If more work lands before recording, say "built for this hackathon".
 - **"This month, our AI employees kept failing…"**: Saint's real experience in October 2026. Don't name merchants. If asked, it's checkouts with secure card fields, CVC and 3-D Secure blocking automated entry.
 - **Facts used and their sources** (details in `market-research.md`):
